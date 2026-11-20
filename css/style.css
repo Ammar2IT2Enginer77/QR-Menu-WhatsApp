@@ -1,0 +1,598 @@
+/* ==========================================================================
+   Burger & Grill Hub — Digital QR Menu Stylesheet (Mobile-First RTL)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg: #0f0f13;
+  --surface: #18181f;
+  --surface-hover: #21212b;
+  --accent: #ff6b2b;
+  --accent-dark: #e05214;
+  --gold: #ffb800;
+  --whatsapp: #25d366;
+  --whatsapp-dark: #1ebe5d;
+  --text: #f8f8fc;
+  --muted: #a1a1b5;
+  --border: #2a2a36;
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Cairo', sans-serif;
+  line-height: 1.6;
+  padding-bottom: 95px;
+}
+
+.container {
+  width: min(1140px, 92%);
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   1. Header & Search Bar
+   -------------------------------------------------------------------------- */
+.menu-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(15, 15, 19, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.restaurant-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  box-shadow: 0 6px 20px rgba(255, 107, 43, 0.35);
+}
+
+.restaurant-brand h1 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.status-badge {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--whatsapp);
+}
+
+.search-box {
+  flex: 1;
+  max-width: 340px;
+  min-width: 220px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.25s;
+}
+
+.search-box input:focus {
+  border-color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   2. Promo Banner
+   -------------------------------------------------------------------------- */
+.promo-banner {
+  padding: 22px 0 10px;
+}
+
+.banner-card {
+  background: linear-gradient(125deg, #241815, #18181f 65%);
+  border: 1px solid rgba(255, 107, 43, 0.35);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.promo-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 107, 43, 0.18);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.banner-text h2 {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.banner-text p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.banner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* --------------------------------------------------------------------------
+   3. Categories Bar
+   -------------------------------------------------------------------------- */
+.categories-bar {
+  padding: 16px 0;
+  position: sticky;
+  top: 76px;
+  z-index: 25;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.categories-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.categories-list::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-btn {
+  white-space: nowrap;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.cat-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.cat-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(255, 107, 43, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   4. Menu Grid & Cards
+   -------------------------------------------------------------------------- */
+.menu-section {
+  padding-top: 24px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.items-count {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.meal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.meal-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.meal-img-wrap {
+  position: relative;
+  height: 185px;
+  background: #121217;
+  overflow: hidden;
+}
+
+.meal-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.meal-card:hover .meal-img-wrap img {
+  transform: scale(1.06);
+}
+
+.meal-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 15, 19, 0.85);
+  color: var(--gold);
+  border: 1px solid rgba(255, 184, 0, 0.4);
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.meal-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.meal-body h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.meal-desc {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.meal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.meal-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.add-meal-btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.add-meal-btn:hover {
+  background: var(--accent-dark);
+}
+
+.add-meal-btn:active {
+  transform: scale(0.95);
+}
+
+/* --------------------------------------------------------------------------
+   5. Floating Cart Button & Drawer Modal
+   -------------------------------------------------------------------------- */
+.floating-cart-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(460px, 92%);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(100deg, var(--accent), #e65100);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(255, 107, 43, 0.45);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, 30px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.cart-badge {
+  background: #fff;
+  color: var(--accent-dark);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.cart-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: flex-end;
+}
+
+.cart-modal-overlay.open {
+  display: flex;
+}
+
+.cart-drawer {
+  width: min(440px, 100%);
+  height: 100%;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.drawer-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close-drawer {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+
+.cart-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-item-info h4 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.cart-item-info span {
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.drawer-footer {
+  padding: 16px 20px;
+  background: #131319;
+  border-top: 1px solid var(--border);
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.order-form input,
+.order-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.order-form input:focus,
+.order-form select:focus {
+  border-color: var(--accent);
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.total-row strong {
+  color: var(--gold);
+  font-size: 21px;
+}
+
+.whatsapp-submit-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: var(--whatsapp);
+  color: #0b2414;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.whatsapp-submit-btn:hover {
+  background: var(--whatsapp-dark);
+}
+
+.menu-footer {
+  margin-top: 50px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .search-box {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .categories-bar {
+    top: 118px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .meal-img-wrap {
+    height: 135px;
+  }
+
+  .meal-body {
+    padding: 12px;
+  }
+
+  .meal-body h3 {
+    font-size: 15px;
+  }
+
+  .meal-desc {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .meal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-meal-btn {
+    width: 100%;
+  }
+}
